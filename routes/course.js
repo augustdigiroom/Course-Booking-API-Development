@@ -19,7 +19,7 @@ router.get("/all", verify, verifyAdmin, courseController.getAllCourses);
 router.get("/", courseController.getAllActive);
 
 //[SECTION] Activity: Route for retrieving a specific course
-router.post("/specific/:courseId", courseController.getCourse);
+router.get("/specific/:courseId", courseController.getCourse);
 
 //[SECTION] Route for updating a course (Admin)
 router.patch("/:courseId", verify, verifyAdmin, courseController.updateCourse);

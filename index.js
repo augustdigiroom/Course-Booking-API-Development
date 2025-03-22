@@ -12,6 +12,7 @@ require('./passport');
 const userRoutes = require("./routes/user");
 const courseRoutes = require("./routes/course");
 const enrollmentRoutes = require("./routes/enrollment");
+const newsRoutes = require("./routes/news");
 
 // [SECTION] Environment Setup
 require('dotenv').config();
@@ -35,7 +36,7 @@ app.use(express.urlencoded({extended:true}));
 // You can also customize the CORS options to meet your specific requirements
 const corsOptions = {
 	// Allow request from this origin (the client's URL) the origin is in array form if there are multiple origins
-	origin: ['http://localhost:8000'],
+	origin: ['http://localhost:3000'],
 	// Allow only specified HTTP methods, optional only if you want to restrict the methods
 	// methods: ['GET', 'POST'],
 
@@ -69,6 +70,7 @@ app.use(passport.session());
 app.use("/users", userRoutes);
 app.use("/courses", courseRoutes);
 app.use("/enrollments", enrollmentRoutes);
+app.use("/news", newsRoutes);
 
 
 if(require.main === module){

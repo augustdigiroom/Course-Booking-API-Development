@@ -30,17 +30,21 @@ module.exports.checkEmailExists = (req, res) => {
 
 //[SECTION] User registration
 module.exports.registerUser = (req, res) => {
+
     // Checks if the email is in the right format
     if (!req.body.email.includes("@")){
-        return res.status(400).send(false);
+        // if the email is not in the right format, send a message 'Invalid email format'.
+        return res.status(400).send({ message: 'Invalid email format' });
     }
     // Checks if the mobile number has the correct number of characters
     else if (req.body.mobileNo.length !== 11){
-        return res.status(400).send(false);
+        // if the mobile number is not in the correct number of characters, send a message 'Mobile number is invalid'.
+        return res.status(400).send({ message: 'Mobile number is invalid' });
     }
     // Checks if the password has atleast 8 characters
     else if (req.body.password.length < 8) {
-        return res.status(400).send(false);
+        // If the password is not atleast 8 characters, send a message 'Password must be atleast 8 characters long'.
+        return res.status(400).send({ message: 'Password must be atleast 8 characters long' });
     // If all needed requirements are achieved
     } else {
         let newUser = new User({
@@ -52,7 +56,11 @@ module.exports.registerUser = (req, res) => {
         })
 
         return newUser.save()
-        .then((result) => res.status(201).send(result))
+        // if all needed requirements are achieved, send a success message 'User registered successfully' and return the newly created user.
+        .then((result) => res.status(201).send({
+            message: 'User registered successfully',
+            user: result
+        }))
         .catch(error => errorHandler(error, req, res));
     }
 };

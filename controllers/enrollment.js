@@ -26,7 +26,10 @@ module.exports.enroll = (req, res) => {
 	
 	return newEnrollment.save()
 	.then(enrolled => {
-		return res.status(201).send(true);
+		return res.status(201).send({
+			success:true,
+			message: 'Enrolled successfully'
+		});
 	})
 	.catch(error => errorHandler(error, req, res));
 
