@@ -52,7 +52,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-// [SECTION] Google Login
+/*// [SECTION] Google Login
 // Creates a session with the given data
 // resave prevents the session from overwriting the secret while the session is active
 // saveUninitialized prevents the data from storing data in the session while the data has not yet been initialized
@@ -64,7 +64,7 @@ app.use(session({
 // Initializes the passport package when the application runs
 app.use(passport.initialize());
 // Creates a session using the passport package
-app.use(passport.session());
+app.use(passport.session());*/
 
 //[SECTION] Backend Routes 
 app.use("/users", userRoutes);
