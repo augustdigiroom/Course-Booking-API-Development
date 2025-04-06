@@ -28,5 +28,7 @@ const enrollmentSchema = new mongoose.Schema({
 	}
 });
 
+
+
 // [SECTION] Model
 module.exports = mongoose.model('Enrollment', enrollmentSchema);
